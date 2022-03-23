@@ -3,6 +3,9 @@ module.exports = {
     './src/**/*.{html,js}'
   ],
   theme: {
+    fontFamily:{
+      lato: ["Lato", "sans-serif"]
+    },
     extend: {},
   },
   plugins: [],

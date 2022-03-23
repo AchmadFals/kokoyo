@@ -1,105 +1,42 @@
-import { useRef, useState, useEffect, useContext } from 'react';
-import AuthContext from './context/authprovider';
+import React from 'react';
+import {Link} from 'react-router-dom';
 
-import axios from '../api/axios';
-const LOGIN_URL = '/auth';
-
-const Login = () => {
-    const { setAuth } = useContext(AuthContext);
-    const userRef = useRef(null);
-    const errRef = useRef(null);
-
-    const [user, setUser]= useState('');
-    const[pwd, setPwd]= useState('');
-    const [errMsg, setErrMsg]=useState('');
-    const [success, setSuccess]= useState(false);
-
-    useEffect(() => {
-        userRef.current.focus();
-    }, [])
-
-    useEffect(() => {
-        setErrMsg('');
-    }, [user, pwd])
-    const handleSubmit = async (e) =>{
-        e.preventDefault();
-
-        try{
-            const response = await axios.post(LOGIN_URL, 
-                JSON.stringify({user, pwd}),
-                {
-                    Headers: { 'Content-Type': 'application/json'},
-                    withCredentials: true
-                }
-                );
-                console.log(JSON.stringify(response?.data));
-                // console.log(JSON.stringify(response));
-                const accessToken = response?.data?.accessToken;
-                const roles = response?.data?.roles;
-                setAuth({ user, pwd, roles, accessToken });
-        setUser('');
-        setPwd('');
-        setSuccess(true);
-        } catch (err) {
-            if (!err?.response) {
-                setErrMsg('No Server Response');
-            } else if (err.response?.status === 400) {
-                setErrMsg('Missing Username or Password');
-            } else if (err.response?.status === 401) {
-                setErrMsg('Unauthorized');
-            } else {
-                setErrMsg('Login Failed');
-            }
-            errRef.current.focus();
-        }
-        
-    }
-    console.log(userRef)
+const Login=() => {
   return (
-      <>
-        {success ? (
-            <section>
-                <h1>Logged In</h1>
-                <br />
-                <p>
-                    <a href="#">Go to Home</a>
-                </p>
-            </section>
-        ) : (
-    <section>
-        <p ref={errRef} className={errMsg ? "errmsg" : 
-        "offscreen"} aria-live="assertive">{errMsg}</p>
-        <h1>Sign in</h1>
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username:</label>
-            <input 
-                type="text" 
-                id="username"
-                ref={userRef}
-                autoComplate="off"
-                onChange={(e) => setUser(e.target.value)}
-                value={user}
-                required
-            />
-            <label htmlFor="password">Password:</label>
-            <input 
-                type="password" 
-                id="password"
-                onChange={(e) => setPwd(e.target.value)}
-                value={pwd}
-                required
-            />
-            <button>Sign In</button>
+    <div>
+      <div className='icon'>
+        <div className='icon_class'>
+        </div>
+        <div className='text'>Log in</div>
+      </div>
+      <div className='row'>
+        <div className='col-6'></div>
+        <div className='col-6'></div>
+      </div>
+      <div className='row m-2'>
+        <form>
+          <div className="form-group">
+              <label for="exampleInputUserName">Username: </label>
+              <input type="username" className="form-control" placeholder="Masukan username anda"  required/>
+          </div>
+          <div className="form-group">
+              <label for="exampleInputPassword1">Password: </label>
+              <input type="password" className="form-control" placeholder="Password" />
+          </div>
+          <div class="form-check">
+              <input type="checkbox" className="form-check-input" id="exampleCheck1"/>
+              <label className="form-check-label" for="exampleCheck1">Check me out</label>
+          </div>
+              <button type="submit" class="btn btn-primary btn-lg btn-block">Submit</button>   
         </form>
-        <p>
-            Need an Account?<br />
-            <span className="line">
-                <a href="#">Sign In</a>
-            </span>
-        </p>
-    </section>
-        )}
-        </>
+      </div>
+      <div className='text-center'>
+        <Link to="/" className='text-black-50'>
+          <h5>Create Account</h5>
+        </Link>
+      </div>
+    </div>
+
   )
 }
 
