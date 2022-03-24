@@ -1,6 +1,6 @@
 import React from 'react';
 import './App.css';
-import './styles/index.css'
+import './styles/index.css';
 import Register from './Register';
 import Login from './Login';
 import Home from './Home';
