@@ -9,10 +9,9 @@ const Home=() => {
         </div>
         <div className='text'>Home Page</div>
       </div>
-     
-      <div className='text-center'>
-        <Link to="/Dashboard" className='text-black-50'>
-          <h5>Home Page</h5>
+      <div>
+        <Link to="/Login">
+        <button type="submit">submit</button>
         </Link>
       </div>
     </div>

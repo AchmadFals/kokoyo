@@ -12,6 +12,7 @@ const Login=() => {
       username,
       password
     })
+      window.location.href("localhost:3000");
   }
   console.log("formData =>", formData)
   return (
@@ -46,7 +47,7 @@ const Login=() => {
                 <label>Remember Me</label>
               </div>
               <div className="footer">
-              <button type="button" onClick={handleLogin} className="transition duration-75 border-2 border-sky-500 w-full px-4 py-1 rounded-md bg-sky-500 text-white">Log in</button>
+              <button type="button" onclick={handleLogin} className="transition duration-75 border-2 border-sky-500 w-full px-4 py-1 rounded-md bg-sky-500 text-white">Log in</button>
             </div>
           </div>
         </div>
