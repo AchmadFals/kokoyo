@@ -2,8 +2,10 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import crop from './crop.png';
+import {useNavigate} from 'react-router-dom';
 
 const Register=() => {
+  const navigate = useNavigate()
   const [formData, setFormData] = useState({})
 
   const handleRegister = async e =>{
@@ -13,23 +15,24 @@ const Register=() => {
       email,
       password,
       confirmPassword} = formData;
-    await axios.post("http://192.168.175.127:8000/Register",{
-      fullName,
-      username,
-      email,
-      password,
-      confirmPassword
-    })
-      window.location.host("localhost:3000") ;
+    // await axios.post("http://192.168.175.127:8000/Register",{
+    //   fullName,
+    //   username,
+    //   email,
+    //   password,
+    //   confirmPassword
+    // })
+    console.log(navigate)
+    navigate("/dashboard")
   }
   console.log("formData =>", formData)
  
   return (
-    <div className='bg-cyan-400 min-h-screen'>
+    <div className='bg-cyan-200 min-h-screen'>
       <div className='row'>
-        <div className='col-6 p-5'></div>
+        <div className='col-6 p-3'></div>
       </div>
-      <div className='row w-1/3 bg-white shadow-lg shadow-sky-800 text-center m-auto rounded-xl py-3.5'>
+      <div className='row w-1/3 bg-white shadow-lg shadow-gray-400 text-center m-auto rounded-xl py-3.5'>
         <div className="form px-6 py-4">
         <img src={crop} className="h-24 ml-36" />
             <div className="form-body">
@@ -88,7 +91,7 @@ const Register=() => {
             </div>
         </div>
         <div className='text-center pb-3'>
-          <h5>Already got an account?<Link to="/Login" className="text-sky-500"> Log in</Link></h5>
+          <h5>Already got an account?<Link to="/login" className="text-sky-500"> Log in</Link></h5>
         </div>
       </div>
     </div>
