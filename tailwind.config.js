@@ -8,7 +8,11 @@ module.exports = {
     fontFamily:{
       lato: ["Lato", "sans-serif"]
     },
-    extend: {},
+    extend: {
+      backroundImage: {
+        'menu': "url('/menu.jpg')",
+      },
+    },
     colors: {
       ...colors,
       'hippie-blue': {

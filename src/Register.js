@@ -28,13 +28,15 @@ const Register=() => {
   console.log("formData =>", formData)
  
   return (
+    <>
+
     <div className='bg-cyan-200 min-h-screen'>
       <div className='row'>
         <div className='col-6 p-3'></div>
       </div>
-      <div className='row w-1/3 bg-white shadow-lg shadow-gray-400 text-center m-auto rounded-xl py-3.5'>
+      <div className='row w-96 md:w-1/3 lg:w-1/3 bg-white shadow-lg shadow-gray-400 text-center m-auto rounded-xl py-3.5'>
         <div className="form px-6 py-4">
-        <img src={crop} className="h-24 ml-36" />
+        <img src={crop} className="h-16 sm:h-64 md:h-24 lg:h-24 mx-auto" />
             <div className="form-body">
                 <div className="fullname pb-2">
                     <label className="form__label block flex font-medium text-neutral-500" for="fullName">Full Name</label>
@@ -95,6 +97,7 @@ const Register=() => {
         </div>
       </div>
     </div>
+    </>
 
   )
 }

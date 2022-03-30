@@ -19,7 +19,7 @@ const Login = (props) => {
     navigate("/dashboard")
   }
   return (
-    <div className="bg-cyan-400 min-h-screen">
+    <div className="bg-cyan-200 min-h-screen">
       <div className="row">
         <div className="col-6 p-5"></div>
       </div>

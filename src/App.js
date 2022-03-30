@@ -1,5 +1,4 @@
 import React from 'react';
-import './App.css';
 import './styles/index.css';
 import Register from './Register';
 import Login from './Login';
@@ -9,7 +8,7 @@ import Manajemen_user from './components/Manajemen_user';
 import Paket_laundry from './components/Paket_laundry';
 import Tipe_pembayaran from './components/Tipe_pembayaran';
 import Transaksi from './components/Transaksi';
-import Navbar from './Navbar';
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -19,7 +18,6 @@ import {
 function App() {
   return (
     <>
-    <Navbar />
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/laporan" element={<Laporan />} />

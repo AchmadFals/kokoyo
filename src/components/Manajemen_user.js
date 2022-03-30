@@ -1,7 +1,8 @@
 import React from 'react';
+import Navbar from '../Navbar';
 
 const Manajemen_user = () => {
-  return <div>Manajemen user</div>
+  return <div><Navbar/></div>
 };
 
 export default Manajemen_user;
