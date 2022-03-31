@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 import "./Navbar.css";
+import crop from './crop.png';
 
 const Navbar = () => {
   return (
     <nav className='fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-20 text-white'>
-        <h3 className='logo text-3xl text-amber-400'>Logo</h3>
+        <img src={crop} className="h-13 sm:h-50 md:h-20 lg:h-20 mr-2.5" />
         <ul className='nav-links flex justify-end list-none w-5'>
             <Link to="/dashboard" className='manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li>Dashboard</li>

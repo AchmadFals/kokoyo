@@ -8,7 +8,6 @@ import Manajemen_user from './components/Manajemen_user';
 import Paket_laundry from './components/Paket_laundry';
 import Tipe_pembayaran from './components/Tipe_pembayaran';
 import Transaksi from './components/Transaksi';
-
 import {
   BrowserRouter as Router,
   Routes,
