@@ -38,7 +38,11 @@ const Dashboard = () => {
               </p>
             </div>
             <div>
-              <img src={Uwong} alt="wangi" className="rounded-xl" />
+              <img
+                src={Uwong}
+                alt="wangi"
+                className="rounded-lg shadow-md shadow-gray-500"
+              />
             </div>
           </div>
         </div>
@@ -48,7 +52,7 @@ const Dashboard = () => {
               Spray Tan
             </h2>
             <br />
-            <p className="text-center text-2xl text-white">
+            <p className="text-center text-2xl text-white mb-10 mx-3.5">
               Z Bods in store location offers custom sunless airbrush spray tans
               for all skin tones. Discover more details about our solution and
               different packages!
@@ -59,16 +63,62 @@ const Dashboard = () => {
               Mobile Spray Tan
             </h2>
             <br />
-            <p className="text-center text-2xl text-white">
+            <p className="text-center text-2xl text-white mb-10 mx-3.5">
               Z Bods mobile spray tanning service is done at the comfortability
               of your home. Find out what sets us apart from others.
             </p>
           </div>
         </div>
-        <div class="w-full grid grid-cols-3">
-          <div></div>
-          <div></div>
-          <div></div>
+        <div className="relative">
+          <h2 className="text-center text-cyan-700 font-extrabold text-4xl mt-10">
+            Jasa Laundry Kami
+          </h2>
+          <div
+            className="absolute w-36 h-1 bg-slate-600 bottom-[-16px] left-[50%]"
+            style={{
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
+        </div>
+        <div class="w-full grid grid-cols-3 mt-10">
+          <div className="bg-slate-200 rounded-md mx-2.5">
+            <h2 className="text-center mb-4 font-bold text-2xl text-slate-600">
+              Laundry Kiloan
+            </h2>
+            <p className="text-center font-normal mx-2.5">
+              Laundry service for kilo clothes in Ciputat and its surroundings,
+              suitable for everyday wear. Includes washing, scrubbing and
+              folding. Can pick up
+            </p>
+          </div>
+          <div className="bg-slate-200 rounded-md mx-2.5">
+            <h4 className="text-center mb-4 font-bold text-2xl text-slate-600">
+              Laundry Unit
+            </h4>
+            <p className="text-center font-normal mx-2.5">
+              Unit laundry services such as shirts, suits etc. Perfect for your
+              special outfit. Detailed workmanship, clean at an affordable
+              price.
+            </p>
+          </div>
+          <div className="bg-slate-200 rounded-md mx-2.5">
+            <h4 className="text-center mb-4 font-bold text-2xl text-slate-600">
+              Carpet Cleaning Service
+            </h4>
+            <p className="text-center font-normal mx-2.5">
+              We do carpet cleaning for homes, mosques and cleaning office
+              carpets for the Jabodetabek area, we are ready to come to the
+              location
+            </p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <h1>Don't have time to wash....!!! Contact us</h1>
+        <div class="w-full grid grid-cols-3 mt-10">
+          <div className=""></div>
+          <div className=""></div>
+          <div className=""></div>
         </div>
       </div>
     </div>
