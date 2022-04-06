@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar';
 
-const Paket_laundry = () => {
+const paketLaundry = () => {
   return  <div> 
             <Navbar/>
             <div className='container'>
@@ -56,4 +56,4 @@ const Paket_laundry = () => {
           </div>
 };
 
-export default Paket_laundry;
+export default paketLaundry;

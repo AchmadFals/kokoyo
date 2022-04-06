@@ -1,13 +1,13 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom';
-import "./Navbar.css";
-import londrii from './londrii.png';
+import "./asset/Navbar.css";
+import londrii from './asset/londrii.png';
 
 const Navbar = () => {
 const url = useLocation()
 console.log("url", url)
   return (
-    <nav className='fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10'>
+    <nav className='fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10 z-20'>
         <img src={londrii} className="h-12 ml-16"/>
         <ul className='flex-1 md:flex lg:flex hidden justify-end list-none w-5'>
             <Link to="/dashboard" className='manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
@@ -18,26 +18,26 @@ console.log("url", url)
                     )}
                 </li>
             </Link>
-            <Link to="/manajemen_user" className='manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
+            <Link to="/manajemen-user" className='manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li className='relative'>
                     Manajemen User
-                    {url.pathname === "/manajemen_user" && (
+                    {url.pathname === "/manajemen-user" && (
                         <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
                     )}
                 </li>
             </Link>
-            <Link to="/paket_laundry" className='paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
+            <Link to="/paket-laundry" className='paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li className='relative'>
                     Paket Laundry
-                    {url.pathname === "/paket_laundry" && (
+                    {url.pathname === "/paket-laundry" && (
                        <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/> 
                     )}
                 </li>
             </Link>
-            <Link to="/tipe_pembayaran" className='tipe_pembayaran no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
+            <Link to="/tipe-pembayaran" className='tipe_pembayaran no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li className='relative'>
                     Tipe Pembayaran
-                    {url.pathname === "/tipe_pembayaran" && (
+                    {url.pathname === "/tipe-pembayaran" && (
                         <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
                     )}
                 </li>

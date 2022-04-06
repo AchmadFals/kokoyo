@@ -1,7 +1,7 @@
 import React from 'react';
 import Navbar from '../Navbar';
 
-const Manajemen_user = () => {
+const ManajemenUser = () => {
   return  <div>
             <Navbar/>
               <div className='content text-center m-20'>
@@ -21,4 +21,4 @@ const Manajemen_user = () => {
           </div>
 };
 
-export default Manajemen_user;
+export default ManajemenUser;

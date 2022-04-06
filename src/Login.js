@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
-import crop from './crop.png';
+import crop from './asset/crop.png';
 
 const Login = (props) => {
   const navigate = useNavigate()

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {Link} from 'react-router-dom';
 import axios from 'axios';
-import crop from './crop.png';
+import crop from './asset/crop.png';
 import {useNavigate} from 'react-router-dom';
 
 const Register=() => {
