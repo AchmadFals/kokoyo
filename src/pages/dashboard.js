@@ -1,0 +1,149 @@
+import React from "react";
+import Navbar from "../Navbar";
+import Uwong from "../asset/uwong.jpg";
+import vespaLaundry from "../asset/antar-jemput.png";
+import "../asset/App.css";
+import Londri from "../asset/londrii.png";
+
+const Dashboard = () => {
+  return (
+    <div>
+      <Navbar />
+      <div className="content">
+        <div className="grid grid-cols-2 bg-[#42C2FF] pt-16">
+          <div className="mx-16 my-16">
+            <h3 className="text-5xl font-extrabold text-white">
+              Laundry antar jemput Hemat waktu dan simpel buat kamu yang #mager
+            </h3>
+          </div>
+          <div>
+            <img src={vespaLaundry} className="m-auto" alt="bg" />
+          </div>
+        </div>
+        <div className="px-24">
+          <h1 className="text-center text-5xl mt-20">
+            Selamat Datang Di Website Official
+          </h1>
+          <br />
+          <h2 className="text-center text-2xl mb-20">
+            Cucian menumpuk? tidak punya waktu buat nyuci? Pengen hemat air dan
+            listrik tapi pakaian pengennya bersih, rapih dan wangi? Jelas
+            kamilah solusinya @khondilaundry
+          </h2>
+          <br />
+          <br />
+          <div className="w-full grid grid-cols-2 gap-4">
+            <div>
+              <h1 className="text-4xl font-medium">Z Bods Spray Tanning</h1>
+              <br />
+              <p className="text-justify text-lg">
+                Musim hujan membuat jemuran semakin menumpuk? Anda tidak perlu
+                bingung. Gunakan waktu sebaik mungkin untuk mengerjakan
+                rutinitas lain yang lebih berharga. Karena Rumah Setrika siap
+                merapikan pakaian Anda hingga lebih licin, wangi, dan siap
+                pakai. Soal harga, kami berikan garansi jaminan harga termurah
+                untuk Anda
+              </p>
+            </div>
+            <div>
+              <img
+                src={Uwong}
+                alt="wangi"
+                className="rounded-lg shadow-md shadow-gray-500"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="w-full grid grid-cols-2 pt-10">
+          <div className="bg-cyan-500">
+            <h2 className="text-center text-4xl font-semibold text-white p-2.5 mt-10">
+              Semprotan
+            </h2>
+            <br />
+            <p className="text-center text-2xl text-white mb-10 mx-4">
+              Z Bods di lokasi toko menawarkan tan semprotan airbrush tanpa
+              sinar matahari khusus untuk semua warna kulit. Temukan detail
+              lebih lanjut tentang solusi kami dan paket yang berbeda!
+            </p>
+          </div>
+          <div className="bg-cyan-600">
+            <h2 className="text-center text-4xl font-semibold text-white p-2.5 mt-10">
+              Semprotan Seluler Tan
+            </h2>
+            <br />
+            <p className="text-center text-2xl text-white mb-10 mx-3.5">
+              Layanan penyamakan semprotan mobile Z Bods dilakukan di kenyamanan
+              rumah Anda. Cari tahu apa yang membedakan kami dari yang lain
+            </p>
+          </div>
+        </div>
+        <div className="mx-24">
+          <h2 className="font-medium text-2xl mb-6 mt-16">Tentang Kami</h2>
+          <h2 className="text-3xl mb-2">
+            Selamat Datang di era Digital Laundry
+          </h2>
+          <h1 className="text-5xl font-medium text-orange-500 mb-10">
+            Tingkatkan produktivitas harian anda dengan fasilitas laundry antar
+            jemput
+          </h1>
+          <p className="text-lg mb-2.5">
+            Apakah anda tidak mempunyai waktu banyak untuk mengantar pakaian
+            anda ke laundry? Di tengah kesibukan anda, kami hadir sebagai
+            membantu anda mencuci pakaian. Dilengkapi dengan dukungan prosedur
+            dan staff terbaik untuk membantu mensolusikan pakaian anda.
+          </p>
+          <p className="text-lg mb-20">
+            Apa yang berbeda di laundry kami ? Kami mempunyai standar khusus
+            yang memudahkan anda tanpa harus repot datang. Jaminan terpercaya
+            bagi anda yang belum merasakan jasa layanan kami dengan melihat
+            review dan kegiatan sehari-hari di website ini atau Social Media
+            kami. Setiap pengguna jasa yang masuk di laundry kami, ditangani
+            oleh pekerja yang terlatih dan berkomitmen. Dengan memanfaatkan
+            teknologi, mempermudah anda tanpa repot datang ke laundry kami.
+            Jangan ragu untuk menjadikan kami sebagai bagian dari mitra laundry
+            dalam membantu anda mencuci pakaian
+          </p>
+        </div>
+      </div>
+      <div className="bg-slate-800 pt-4">
+        <h1 className="text-center font-semibold text-white text-3xl">
+          Don't have time to wash....!!! Contact us
+        </h1>
+        <div class="w-full grid grid-cols-3 ">
+          <div className="">
+            <img src={Londri} alt="londri" className="h-12 m-10 mb-26" />
+          </div>
+          <div>
+            <h2 className="text-center font-semibold text-white text-2xl mt-4 mb-4">
+              About
+            </h2>
+            <p className="text-left mr-10 text-white font-medium">
+              Bingung karena jemuran belum kering juga? Jemuran numpuk, banyak
+              yang ga kebagian tempat? Baju pada bau apek? KHONDI Laundry
+              solusinya. Jasa laundry yang BISA menyiapkan pakaian Anda dengan
+              cepat, rapi, bersih, dan tentunya WANGI. KHONDI laundry buka 15
+              jam setiap hari!
+            </p>
+          </div>
+          <div>
+            <h2 className="text-center font-semibold text-white text-2xl mt-4 mb-4">
+              Contact Us
+            </h2>
+            <h4 className="text-left font-lg text-white font-medium">
+              WhatsApp
+            </h4>
+            <p className="mb-2.5 text-white">085708648046</p>
+            <h4 className="text-left font-lg text-white font-medium">
+              TelePhone
+            </h4>
+            <p className="mb-2.5 text-white">085853757211</p>
+            <h4 className="text-left font-lg text-white font-medium">Email</h4>
+            <p className="text-white mb-6">adityaontonk1414@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Dashboard;

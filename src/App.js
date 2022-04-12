@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles/index.css';
-import Register from './Register';
-import Login from './Login';
-import Dashboard from './Dashboard';
-import Laporan from './components/Laporan';
-import ManajemenUser from './components/ManajemenUser';
-import PaketLaundry from './components/paketLaundry';
-import TipePembayaran from './components/TipePembayaran';
-import Transaksi from './components/Transaksi';
+import Register from './pages/register';
+import Login from './pages/login';
+import Dashboard from './pages/dashboard';
+import Laporan from './pages/laporan';
+import ManajemenUser from './pages/manajemenUser';
+import PaketLaundry from './pages/paketLaundry';
+import TipePembayaran from './pages/tipePembayaran';
+import Transaksi from './pages/transaksi';
 import {
   BrowserRouter as Router,
   Routes,
