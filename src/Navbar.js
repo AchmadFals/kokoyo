@@ -34,18 +34,18 @@ console.log("url", url)
                     )}
                 </li>
             </Link>
-            <Link to="/tipe-pembayaran" className='tipe_pembayaran no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
+            <Link to="/syarat-dan-ketentuan" className='tipe_pembayaran no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li className='relative'>
-                    Tipe Pembayaran
-                    {url.pathname === "/tipe-pembayaran" && (
+                    Syarat dan Ketentuan
+                    {url.pathname === "/syarat-dan-ketentuan" && (
                         <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
                     )}
                 </li>
             </Link>
-            <Link to="/transaksi" className='transaksino-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
+            <Link to="/kontak-kami" className='transaksino-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li className='relative'>
-                    Transaksi
-                    {url.pathname === "/transaksi" && (
+                    Kontak kami
+                    {url.pathname === "/kontak-kami" && (
                         <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
                     )}
                 </li>

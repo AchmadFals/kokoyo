@@ -4,6 +4,9 @@ import Uwong from "../asset/uwong.jpg";
 import vespaLaundry from "../asset/antar-jemput.png";
 import "../asset/App.css";
 import Londri from "../asset/londrii.png";
+import Schedule from "../asset/icon_schedule.png";
+import mesinCuci from "../asset/icon_mesin_cuci.png";
+import delivery2 from "../asset/icon_delivery2.png";
 
 const Dashboard = () => {
   return (
@@ -104,8 +107,35 @@ const Dashboard = () => {
             dalam membantu anda mencuci pakaian
           </p>
         </div>
+        <h1 className="text-4xl font-bold text-orange-500 text-center mb-20">
+          Cara Kerja Laundry Kami
+        </h1>
+        <div className="grid grid-cols-3 mb-20">
+          <div>
+            <img src={Schedule} alt="schedule" className="w-50 mx-44 mb-3.5" />
+            <h2 className="text-center font-medium">
+              Pilih Jadwal Pengambilan kapan saja
+            </h2>
+          </div>
+          <div>
+            <img
+              src={mesinCuci}
+              alt="mesinCuci"
+              className="w-50 mx-44 mb-3.5"
+            />
+            <h2 className="text-center font-medium">
+              Kami Proses Pakaian Anda
+            </h2>
+          </div>
+          <div>
+            <img src={delivery2} alt="delivery" className="w-50 mx-44 mb-3.5" />
+            <h2 className="text-center font-medium">
+              Antar Pakaian Bersih Sesuai Jadwal antar jemput tambakboyo
+            </h2>
+          </div>
+        </div>
       </div>
-      <div className="bg-slate-800 pt-4">
+      <div className="bg-gray-700 pt-4">
         <h1 className="text-center font-semibold text-white text-3xl">
           Don't have time to wash....!!! Contact us
         </h1>
