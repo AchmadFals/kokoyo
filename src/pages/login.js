@@ -3,14 +3,19 @@ import {Link} from 'react-router-dom';
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom';
 import crop from '../asset/crop.png';
+import { connect } from "react-redux";
+import { LoginAuth } from "../redux/actions/auth";
+
 
 const Login = (props) => {
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({})
 
+
   const handleLogin = async e =>{
-    const {username, password} = formData;
+    const {dispatch} =props
+    dispatch(LoginAuth(formData))
     // await axios.post("http://192.168.175.127:8000/login",{
     //   username,
     //   password
@@ -25,7 +30,7 @@ const Login = (props) => {
       </div>
       <div className="row w-1/3 bg-white shadow-lg shadow-gray-400 text-center m-auto rounded-xl py-3.5">
         <div className="form px-6 py-4">
-          <img src={crop} className="h-24 ml-36" />
+          <img src={crop} className="h-24 ml-36" alt="yt"/>
           <div className="form-body p-7">
               <div className="username pb-2">
                 <label className="form__label block flex font-medium text-neutral-500">Username</label>
@@ -61,5 +66,10 @@ const Login = (props) => {
     </div>
   );
 }
-
-export default Login;
+function mapDispatchToProps(state) {
+  const { isLoggedIn } = state.auth;
+  return {
+    isLoggedIn,
+  };
+}
+export default connect(mapDispatchToProps)(Login);
