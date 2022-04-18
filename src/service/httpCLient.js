@@ -46,7 +46,7 @@ axiosInstance.interceptors.response.use(
         }
       );
       // check if session expired
-      if (error.response.status == 401) {
+      if (error.response.status === 401) {
         localStorage.removeItem("___user_data");
         return Router.replace("/login");
       }
