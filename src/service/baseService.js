@@ -1,5 +1,5 @@
 import axiosInstance from "./httpCLient";
-import encryptedLS from "libs/encryptedLS";
+import encryptedLS from "../libs/encryptedLS";
 
 class BaseService {
   constructor() {

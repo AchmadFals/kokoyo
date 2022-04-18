@@ -1,7 +1,6 @@
 import axios from "axios";
 import { toast } from "react-toastify";
 import NProgress from "nprogress";
-import Router from "next/router";
 import ReactHtmlParser from "react-html-parser";
 
 // import AuthService from '../service/auth.service'
@@ -48,7 +47,7 @@ axiosInstance.interceptors.response.use(
       // check if session expired
       if (error.response.status === 401) {
         localStorage.removeItem("___user_data");
-        return Router.replace("/login");
+        // return Router.replace("/login");
       }
     }
     NProgress.done();

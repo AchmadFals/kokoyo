@@ -18,14 +18,6 @@ console.log("url", url)
                     )}
                 </li>
             </Link>
-            <Link to="/manajemen-user" className='manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
-                <li className='relative'>
-                    Manajemen User
-                    {url.pathname === "/manajemen-user" && (
-                        <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
-                    )}
-                </li>
-            </Link>
             <Link to="/paket-laundry" className='paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
                 <li className='relative'>
                     Paket Laundry

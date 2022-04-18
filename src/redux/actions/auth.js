@@ -1,7 +1,7 @@
 import AuthService from "../../service/auth";
 import CompanyService from "../../service/company";
-import encryptedLS from "libs/encryptedLS";
-import { showLoadingSpinner, hideLoadingSpinner } from "components/Layout";
+import encryptedLS from "../../libs/encryptedLS";
+import { showLoadingSpinner, hideLoadingSpinner } from "../../components/Layout";
 
 export const LoginAuth = (email, password, interfaceApps) => async (
   dispatch

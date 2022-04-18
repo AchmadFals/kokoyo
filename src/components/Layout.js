@@ -1,16 +1,12 @@
 import * as React from "react";
 import { get } from "lodash";
-import Head from "next/head";
 import { Navbar, Nav, Image, Button, Collapse, Modal } from "react-bootstrap";
-import Menu from "../components/Menu";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { toast } from "react-toastify";
 import { connect } from "react-redux";
 import { isEmpty } from "lodash";
-import { formatCurrency } from "libs/numbers";
-import { currentUserDontHavePermissions } from "libs/rolePermission";
-import { getCompany } from "../redux/actions/company";
+import { formatCurrency } from "../libs/numbers";
 import { updateBillingInvoice } from "../redux/actions/billing_invoices";
 import NoSSR from "react-no-ssr";
 
@@ -208,10 +204,7 @@ class Layout extends React.Component {
         is_approved: true,
       },
       {}
-    );
-    await this.props.getCompany({
-      company_id: notApprovedBillingInvoice.company_id,
-    });
+    )
     addNotification({
       level: "success",
       message: "Approved billing invoices successfully!",
@@ -231,22 +224,6 @@ class Layout extends React.Component {
     } = this.state;
     return (
       <div className={classname}>
-        <Head>
-          {/* <html className="theme-light"> */}
-          <title>Semanggi - {title}</title>
-          <meta charSet="utf-8" />
-          <link
-            rel="icon"
-            href="../static/images/favicon.png"
-            type="image/x-icon"
-          />
-          <meta
-            name="viewport"
-            content="initial-scale=1.0, width=device-width"
-          />
-          {/* </html> */}
-        </Head>
-
         {/* Left Navigation */}
 
         <LoadingSpinner
@@ -255,181 +232,7 @@ class Layout extends React.Component {
             _loadingSpinner = comp;
           }}
         />
-        {/* Modal Edit Billing Invoice */}
-        <Modal
-          show={billingInvoiceModalVisible}
-          onHide={this.closeBillingInvoiceModal}
-          dialogClassName="modal-90w"
-          centered
-        >
-          <Modal.Header
-            closeButton
-            style={{ border: "none", paddingLeft: "20px" }}
-          >
-            <Modal.Title id="example-custom-modal-styling-title">
-              <h3>Bill Info</h3>
-            </Modal.Title>
-          </Modal.Header>
-          <Modal.Body style={{ padding: "20px 30px 20px 30px" }}>
-            {currentUserDontHavePermissions(["Approve Billing Invoices"]) ? (
-              <h5 className="text-center mb-2">
-                Do you agree with a monthly bill of:{" "}
-              </h5>
-            ) : (
-              <h5 className="text-center mb-2">
-                Total bill monthly your company is:{" "}
-              </h5>
-            )}
 
-            <h3 className="text-danger text-center my-3">
-              {notApprovedBillingInvoice && notApprovedBillingInvoice.amount
-                ? "Rp" + formatCurrency(notApprovedBillingInvoice.amount)
-                : null}
-            </h3>
-            {!currentUserDontHavePermissions([
-              "Approve Billing Invoices",
-            ]) ? null : (
-              <p className="text-center">
-                Please ask Administrator or Manager of your Company
-              </p>
-            )}
-          </Modal.Body>
-          <Modal.Footer style={{ border: "none" }}>
-            <Button
-              className={`btn-${
-                !currentUserDontHavePermissions(["Approve Billing Invoices"])
-                  ? "danger-semanggi"
-                  : "secondary-semanggi"
-              }`}
-              onClick={this.closeBillingInvoiceModal}
-            >
-              {!currentUserDontHavePermissions(["Approve Billing Invoices"])
-                ? "Reject"
-                : "Close"}
-            </Button>
-            {!currentUserDontHavePermissions(["Approve Billing Invoices"]) ? (
-              <Button
-                className="btn-success-semanggi"
-                onClick={this.handleApproveBillingInvoice}
-              >
-                Approve
-              </Button>
-            ) : null}
-          </Modal.Footer>
-        </Modal>
-
-        <div
-          style={{ overflowX: "hidden", overflowY: "hidden" }}
-          className={
-            this.state.condition
-              ? "col-sm-2 bg-light sidebar toggled sidebartext position-fixed w-200 h-100vh horizantal"
-              : "bg-light sidebar sidebartext position-fixed w-200 h-100vh horizantal"
-          }
-        >
-          <Navbar className="flex-column p-0 mb-4 align-items-left">
-            <Navbar.Brand
-              href="/#home"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginBottom: "20px",
-                marginTop: "10px",
-              }}
-            >
-              {/* <img
-                style={{ maxWidth: "75%" }}
-                src={
-                  classname === "navbar-with-bg"
-                    ? "https://storage.googleapis.com/spaces-semanggi-app/landing-page/png/semanggi-flower-white.png"
-                    : "https://storage.googleapis.com/spaces-semanggi-app/web-pos/png/semanggi-flower.png"
-                }
-                //src="https://storage.googleapis.com/spaces-semanggi-app/web-pos/png/semanggi-flower.png"
-              /> */}
-              <div className="text-logo">
-                <h3 style={{ letterSpacing: "2px", marginBottom: 0 }}>
-                  SEMANGGI
-                </h3>
-                <p style={{ fontSize: "0.6em", margin: 0 }}>
-                  SEMANGAT SEMAKIN TINGGI
-                </p>
-              </div>
-            </Navbar.Brand>
-            <i className="fa fa-close" onClick={this.handleClick} />
-            <Menu />
-          </Navbar>
-        </div>
-        {/* End of Left Navigation */}
-
-        <div
-          className={
-            this.state.condition
-              ? "main-conatiner toggled row"
-              : "main-conatiner row"
-          }
-        >
-          {/* Header Section */}
-          <header className=" col-sm-12 headerbg position-fixed">
-            <Navbar className="custom-navbar">
-              <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">
-                  <div className="d-inline-block">
-                    <i
-                      style={{ marginTop: "31px" }}
-                      className="fa fa-bars"
-                      onClick={this.handleClick}
-                    />
-                  </div>
-                  <Nav.Link style={{ marginTop: "20px", marginLeft: "20px" }}>
-                    {!customTitle ? (
-                      <p>
-                        <strong>{title}</strong>
-                      </p>
-                    ) : (
-                      customTitle
-                    )}
-                  </Nav.Link>
-                </Nav>
-
-                <Header />
-              </Navbar.Collapse>
-            </Navbar>
-          </header>
-
-          {/* End of Header Section */}
-
-          {/* Right Sidebar */}
-          {/* <div className={!this.state.chat ? 'hide' : 'show'}>
-            <div className="rightSide position-fixed theme-shadow chatbar">
-              <div
-                className={
-                  !this.state.chat ? 'hide chatHeader' : 'show chatHeader'
-                }
-              >
-                <div className="chat-profile d-flex align-items-center">
-                  <img src="/static/images/ella.png" className="img-fluid" />
-                  Ella Montgomery
-                  {' '}
-                  <i
-                    className="fa fa-close ml-auto mr-3"
-                    onClick={this.handleChat}
-                  />
-                </div>
-              </div>
-              <RightSidebar />
-            </div>
-          </div> */}
-          {/* End of Right Sidebar */}
-
-          {/* Main Container */}
-          <NoSSR>
-            <article className="col-sm-12 dashboard-section pt-3">
-              {this.props.children}
-            </article>
-          </NoSSR>
-          {/* End of Main Container */}
-          <Footer />
-        </div>
       </div>
     );
   }
@@ -480,7 +283,6 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    getCompany: (payload) => dispatch(getCompany(payload)),
     updateBillingInvoice: (id, payload, opts) =>
       dispatch(updateBillingInvoice(id, payload, opts)),
   };
