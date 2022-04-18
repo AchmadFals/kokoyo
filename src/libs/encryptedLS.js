@@ -1,6 +1,6 @@
 import SecureLS from "secure-ls";
 
-if (!process.browser) {
+if (window && window.process && !process.browser) {
   global.localStorage = {
     setItem: () => {},
     getItem: () => {},
@@ -25,7 +25,7 @@ try {
   }
 }
 
-let encryptedLS = !process.browser
+let encryptedLS = (window && window.process && !window.process.browser)
   ? secureLS
   : {
       get: (key) => {
