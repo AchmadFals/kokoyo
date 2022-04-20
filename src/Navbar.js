@@ -55,35 +55,33 @@ const Navbar = () => {
             )}
           </li>
         </Link>
-          <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows">
+        <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows p-2.5 m-2.5">
+          {" "}
+          <Link to="#">
             {" "}
-            <Link to="#">
-              {" "}
-              Bantuan <FiChevronDown />{" "}
-            </Link>
-            <ul className={boxClassSubMenu.join(" ")}>
+            Bantuan <FiChevronDown />{" "}
+          </Link>
+          <div className="absolute bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
+            <div className="px-4 py-3">
+              <span className="block text-sm">Bonnie Green</span>
+              <span className="block text-sm font-medium text-gray-900 truncate">name@flowbite.com</span>
+            </div>
+            <ul className="py-1" aria-labelledby="dropdown">
               <li>
-                <NavLink
-                  onClick={toggleClass}
-                  activeClassName="is-active"
-                  to="./pages/syaratDanKetentuan"
-                >
-                  {" "}
-                  Syarat dan Ketentuan{" "}
-                </NavLink>{" "}
+                <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Dashboard</a>
               </li>
               <li>
-                <NavLink
-                  onClick={toggleClass}
-                  activeClassName="is-active"
-                  to="./pages/KontakKami"
-                >
-                  {" "}
-                  Kontak Kami{" "}
-                </NavLink>{" "}
+                <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Settings</a>
+              </li>
+              <li>
+                <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Earnings</a>
+              </li>
+              <li>
+                <a href="#" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">Sign out</a>
               </li>
             </ul>
-          </li>
+          </div>
+        </li>
         <Link
           to="/register"
           className="laporan no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
