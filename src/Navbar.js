@@ -11,6 +11,7 @@ const Navbar = () => {
     setisMenu(isMenu === false ? true : false);
     setResponsiveclose(isResponsiveclose === false ? true : false);
   };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   let boxClass = ["main-menu menu-right menuq1"];
   if (isMenu) {
     boxClass.push("menuq2");
@@ -55,13 +56,13 @@ const Navbar = () => {
             )}
           </li>
         </Link>
-        <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows p-2.5 m-2.5">
+        <li onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="relative menu-item sub__menus__arrows p-2.5 m-2.5">
           {" "}
-          <Link to="#">
+          <Link to="#" className="flex flex-row items-center gap-1">
             {" "}
             Bantuan <FiChevronDown />{" "}
           </Link>
-          <div className="absolute bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4" id="dropdown">
+          <div className={`${isDropdownOpen ? 'block' : 'hidden'} absolute bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4`}>
             <div className="px-4 py-3">
               <span className="block text-sm">Bonnie Green</span>
               <span className="block text-sm font-medium text-gray-900 truncate">name@flowbite.com</span>
