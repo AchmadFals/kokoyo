@@ -1,56 +1,103 @@
-import React from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import React, { useState } from "react";
+import { NavLink, Link, useLocation } from "react-router-dom";
 import "./asset/Navbar.css";
-import londrii from './asset/londrii.png';
+import londrii from "./asset/londrii.png";
+import { FiChevronDown } from "react-icons/fi";
 
 const Navbar = () => {
-const url = useLocation()
-console.log("url", url)
+  const [isMenu, setisMenu] = useState(false);
+  const [isResponsiveclose, setResponsiveclose] = useState(false);
+  const toggleClass = () => {
+    setisMenu(isMenu === false ? true : false);
+    setResponsiveclose(isResponsiveclose === false ? true : false);
+  };
+  let boxClass = ["main-menu menu-right menuq1"];
+  if (isMenu) {
+    boxClass.push("menuq2");
+  } else {
+    boxClass.push("");
+  }
+  const [isMenuSubMenu, setMenuSubMenu] = useState(false);
+  const toggleSubmenu = () => {
+    setMenuSubMenu(isMenuSubMenu === false ? true : false);
+  };
+  let boxClassSubMenu = ["sub__menus"];
+  if (isMenuSubMenu) {
+    boxClassSubMenu.push("sub__menus__Active");
+  } else {
+    boxClassSubMenu.push("");
+  }
+  const url = useLocation();
+  console.log("url", url);
   return (
-    <nav className='fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10 z-20'>
-        <img src={londrii} className="h-12 ml-16"/>
-        <ul className='flex-1 md:flex lg:flex hidden justify-end list-none w-5'>
-            <Link to="/dashboard" className='manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
-                <li className='relative'>
-                    Dashboard
-                    {url.pathname === "/dashboard" && (
-                        <span className="absolute bottom-[-20px] bg-orange-400 h-[4px]  text-orange-500 left-0 right-0 z-[1]"/>
-                    )}
-                </li>
+    <nav className="fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10 z-20">
+      <img src={londrii} className="h-12 ml-16" alt="londri" />
+      <ul className="flex-1 md:flex lg:flex hidden justify-end list-none w-5">
+        <Link
+          to="/dashboard"
+          className="manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
+        >
+          <li className="relative">
+            Dashboard
+            {url.pathname === "/dashboard" && (
+              <span className="absolute bottom-[-20px] bg-orange-400 h-[4px]  text-orange-500 left-0 right-0 z-[1]" />
+            )}
+          </li>
+        </Link>
+        <Link
+          to="/paket-laundry"
+          className="paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
+        >
+          <li className="relative">
+            Paket Laundry
+            {url.pathname === "/paket-laundry" && (
+              <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]" />
+            )}
+          </li>
+        </Link>
+          <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows">
+            {" "}
+            <Link to="#">
+              {" "}
+              Bantuan <FiChevronDown />{" "}
             </Link>
-            <Link to="/paket-laundry" className='paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
-                <li className='relative'>
-                    Paket Laundry
-                    {url.pathname === "/paket-laundry" && (
-                       <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/> 
-                    )}
-                </li>
-            </Link>
-            <Link to="/syarat-dan-ketentuan" className='tipe_pembayaran no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
-                <li className='relative'>
-                    Syarat dan Ketentuan
-                    {url.pathname === "/syarat-dan-ketentuan" && (
-                        <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
-                    )}
-                </li>
-            </Link>
-            <Link to="/kontak-kami" className='transaksino-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
-                <li className='relative'>
-                    Kontak kami
-                    {url.pathname === "/kontak-kami" && (
-                        <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]"/>
-                    )}
-                </li>
-            </Link>
-            <Link to="/register" className='laporan no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer'>
-                <li className='border-1 px-4 rounded-md border-solid border-purple-600 bg-orange-400'>Sign Up</li>
-            </Link>
-        </ul>
-        <ul className='md:hidden lg:hidden visible'>
-            <li>Menu</li>
-        </ul>
+            <ul className={boxClassSubMenu.join(" ")}>
+              <li>
+                <NavLink
+                  onClick={toggleClass}
+                  activeClassName="is-active"
+                  to="./pages/syaratDanKetentuan"
+                >
+                  {" "}
+                  Syarat dan Ketentuan{" "}
+                </NavLink>{" "}
+              </li>
+              <li>
+                <NavLink
+                  onClick={toggleClass}
+                  activeClassName="is-active"
+                  to="./pages/KontakKami"
+                >
+                  {" "}
+                  Kontak Kami{" "}
+                </NavLink>{" "}
+              </li>
+            </ul>
+          </li>
+        <Link
+          to="/register"
+          className="laporan no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
+        >
+          <li className="border-1 px-4 rounded-md border-solid border-purple-600 bg-orange-400">
+            Log out
+          </li>
+        </Link>
+      </ul>
+      <ul className="md:hidden lg:hidden visible">
+        <li>Menu</li>
+      </ul>
     </nav>
-  )
-}
+  );
+};
 
 export default Navbar;

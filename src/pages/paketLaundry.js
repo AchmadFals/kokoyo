@@ -6,18 +6,18 @@ const paketLaundry = () => {
   return (
     <div>
       <Navbar />
-      <div className="relative pt-10">
-        <h2 className="text-center text-cyan-700 font-extrabold text-4xl mt-10">
-          Jasa Laundry Kami
-        </h2>
-        <div
-          className="absolute w-36 h-1 bg-slate-600 bottom-[-16px] left-[50%]"
-          style={{
-            transform: "translate(-50%, -50%)",
-          }}
-        ></div>
-      </div>
       <div className="bg-slate-100 pt-7 pb-7">
+        <div className="relative pt-10">
+          <h2 className="text-center text-cyan-700 font-extrabold text-4xl mt-10">
+            Jasa Laundry Kami
+          </h2>
+          <div
+            className="absolute w-36 h-1 bg-slate-600 bottom-[-16px] left-[50%]"
+            style={{
+              transform: "translate(-50%, -50%)",
+            }}
+          ></div>
+        </div>
         <div class="grid grid-cols-3 gap-3">
           <div className="bg-white rounded-xl mx-2.5 shadow-md shadow-gray-500 mt-11">
             <h2 className="text-center mb-4 font-bold text-2xl text-black mt-3">
