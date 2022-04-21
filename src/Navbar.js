@@ -11,6 +11,7 @@ const Navbar = () => {
     setisMenu(isMenu === false ? true : false);
     setResponsiveclose(isResponsiveclose === false ? true : false);
   };
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   let boxClass = ["main-menu menu-right menuq1"];
   if (isMenu) {
     boxClass.push("menuq2");
@@ -33,10 +34,7 @@ const Navbar = () => {
     <nav className="fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10 z-20">
       <img src={londrii} className="h-12 ml-16" alt="londri" />
       <ul className="flex-1 md:flex lg:flex hidden justify-end list-none w-5">
-        <Link
-          to="/dashboard"
-          className="manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
-        >
+        <Link to="/dashboard" className="manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer">
           <li className="relative">
             Dashboard
             {url.pathname === "/dashboard" && (
@@ -44,10 +42,7 @@ const Navbar = () => {
             )}
           </li>
         </Link>
-        <Link
-          to="/paket-laundry"
-          className="paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
-        >
+        <Link to="/paket-laundry" className="paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer">
           <li className="relative">
             Paket Laundry
             {url.pathname === "/paket-laundry" && (
@@ -55,39 +50,36 @@ const Navbar = () => {
             )}
           </li>
         </Link>
-          <li onClick={toggleSubmenu} className="menu-item sub__menus__arrows">
+        <li onClick={() => setIsDropdownOpen(!isDropdownOpen)} className="menu-item sub__menus__arrows p-2.5 m-2.5">
+          {" "}
+          <Link to="#" className="flex flex-row items-center gap-1">
             {" "}
-            <Link to="#">
-              {" "}
-              Bantuan <FiChevronDown />{" "}
-            </Link>
-            <ul className={boxClassSubMenu.join(" ")}>
+            Bantuan <FiChevronDown />{" "}
+          </Link>
+          <div className={`${isDropdownOpen ? 'block' : 'hidden'} absolute bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4`}>
+            <div className="px-4 py-3">
+              <span className="block text-sm font-medium text-gray-900 truncate">
+                name@flowbite.com
+              </span>
+            </div>
               <li>
-                <NavLink
-                  onClick={toggleClass}
-                  activeClassName="is-active"
-                  to="./pages/syaratDanKetentuan"
-                >
-                  {" "}
-                  Syarat dan Ketentuan{" "}
-                </NavLink>{" "}
+                <a href="/syarat-dan-ketentuan" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
+                  Syarat dan Ketentuan
+                </a>
               </li>
               <li>
-                <NavLink
-                  onClick={toggleClass}
-                  activeClassName="is-active"
-                  to="./pages/KontakKami"
-                >
-                  {" "}
-                  Kontak Kami{" "}
-                </NavLink>{" "}
+                <a href="/kontak-kami" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
+                  Kontak Kami
+                </a>
               </li>
-            </ul>
-          </li>
-        <Link
-          to="/register"
-          className="laporan no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer"
-        >
+              <li>
+                <a href="/register" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
+                  Sign out
+                </a>
+              </li>
+          </div>
+        </li>
+        <Link to="/register" className="laporan no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer">
           <li className="border-1 px-4 rounded-md border-solid border-purple-600 bg-orange-400">
             Log out
           </li>

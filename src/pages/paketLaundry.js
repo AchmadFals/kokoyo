@@ -78,14 +78,14 @@ const paketLaundry = () => {
       </div>
       <div className="bg-slate-800 pt-4">
         <h1 className="text-center font-semibold text-white text-3xl">
-          Don't have time to wash....!!! Contact us
+          Don't have time to wash....!!!
         </h1>
         <div class="w-full grid grid-cols-3 ">
           <div className="">
             <img src={Londri} alt="londri" className="h-12 m-10 mb-26" />
           </div>
           <div>
-            <h2 className="text-center font-semibold text-white text-2xl mt-4 mb-4">
+            <h2 className="text-left font-semibold text-white text-2xl mt-4 mb-4">
               About
             </h2>
             <p className="text-left mr-10 text-white font-medium">
@@ -97,7 +97,7 @@ const paketLaundry = () => {
             </p>
           </div>
           <div>
-            <h2 className="text-center font-semibold text-white text-2xl mt-4 mb-4">
+            <h2 className="text-left font-semibold text-white text-2xl mt-4 mb-4">
               Contact Us
             </h2>
             <h4 className="text-left font-lg text-white font-medium">

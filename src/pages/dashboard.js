@@ -31,7 +31,7 @@ const Dashboard = () => {
           <h2 className="text-center text-2xl mb-20">
             Cucian menumpuk? tidak punya waktu buat nyuci? Pengen hemat air dan
             listrik tapi pakaian pengennya bersih, rapih dan wangi? Jelas
-            kamilah solusinya @khondilaundry
+            kamilah solusinya @cleanlaundry
           </h2>
           <br />
           <br />
@@ -128,23 +128,23 @@ const Dashboard = () => {
             </h2>
           </div>
           <div>
-            <img src={delivery2} alt="delivery" className="w-50 mx-44 mb-3.5" />
+            <img src={delivery2} alt="delivery" className="w-50 mx-48 mb-3.5" />
             <h2 className="text-center font-medium">
-              Antar Pakaian Bersih Sesuai Jadwal antar jemput tambakboyo
+              Antar Pakaian Sesuai Jadwal antar jemput tambakboyo
             </h2>
           </div>
         </div>
       </div>
       <div className="bg-gray-700 pt-4">
         <h1 className="text-center font-semibold text-white text-3xl">
-          Don't have time to wash....!!! Contact us
+          Don't have time to wash....!!!
         </h1>
         <div class="w-full grid grid-cols-3 ">
           <div className="">
             <img src={Londri} alt="londri" className="h-12 m-10 mb-26" />
           </div>
           <div>
-            <h2 className="text-center font-semibold text-white text-2xl mt-4 mb-4">
+            <h2 className="text-left font-semibold text-white text-2xl mt-4 mb-4">
               About
             </h2>
             <p className="text-left mr-10 text-white font-medium">
@@ -156,7 +156,7 @@ const Dashboard = () => {
             </p>
           </div>
           <div>
-            <h2 className="text-center font-semibold text-white text-2xl mt-4 mb-4">
+            <h2 className="text-left font-semibold text-white text-2xl mt-4 mb-4">
               Contact Us
             </h2>
             <h4 className="text-left font-lg text-white font-medium">
