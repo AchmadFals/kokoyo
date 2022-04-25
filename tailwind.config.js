@@ -6,7 +6,7 @@ module.exports = {
   ],
   theme: {
     fontFamily:{
-      lato: ["Lato", "sans-serif"]
+      poppins: ["Poppins", "sans-serif"]
     },
     extend: {
       backroundImage: {

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { NavLink, Link, useLocation } from "react-router-dom";
 import "./asset/Navbar.css";
-import londrii from "./asset/londrii.png";
+import clean from "./asset/clean.png";
 import { FiChevronDown } from "react-icons/fi";
-
 const Navbar = () => {
   const [isMenu, setisMenu] = useState(false);
   const [isResponsiveclose, setResponsiveclose] = useState(false);
@@ -32,7 +31,7 @@ const Navbar = () => {
   console.log("url", url);
   return (
     <nav className="fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10 z-20">
-      <img src={londrii} className="h-12 ml-16" alt="londri" />
+      <img src={clean} className="h-24 ml-16" alt="londri" />
       <ul className="flex-1 md:flex lg:flex hidden justify-end list-none w-5">
         <Link to="/dashboard" className="manajemen_user no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer">
           <li className="relative">
@@ -59,7 +58,7 @@ const Navbar = () => {
           <div className={`${isDropdownOpen ? 'block' : 'hidden'} absolute bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4`}>
             <div className="px-4 py-3">
               <span className="block text-sm font-medium text-gray-900 truncate">
-                name@flowbite.com
+                caisguna@gmail.com
               </span>
             </div>
               <li>
