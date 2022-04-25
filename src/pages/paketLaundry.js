@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "../Navbar";
-import Londri from "../asset/londrii.png";
+import Laundry from "../asset/laundry.png";
 
 const paketLaundry = () => {
   return (
@@ -82,7 +82,7 @@ const paketLaundry = () => {
         </h1>
         <div class="w-full grid grid-cols-3 ">
           <div className="">
-            <img src={Londri} alt="londri" className="h-12 m-10 mb-26" />
+            <img src={Laundry} alt="londri" className="h-20 m-10 mb-26"  />
           </div>
           <div>
             <h2 className="text-left font-semibold text-white text-2xl mt-4 mb-4">
