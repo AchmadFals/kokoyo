@@ -31,7 +31,7 @@ const Navbar = () => {
   const url = useLocation();
   console.log("url", url);
   return (
-    <nav className="fixed top-0 right-0 left-0 navbar bg-hippie-blue-500 flex justify-around items-center h-16 text-white px-10 z-20">
+    <nav className="fixed top-0 right-0 left-0 navbar bg-sky-900 flex justify-around items-center h-16 text-white px-10 z-20">
       <img src={Laundry} className="h-20 ml-16" alt="londri" />
       <ul className="flex-1 md:flex lg:flex hidden justify-end list-none w-5">
         <Link to="/dashboard" className="no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer">
@@ -44,7 +44,7 @@ const Navbar = () => {
         </Link>
         <Link to="/paket-laundry" className="paket_laundry no-underline slate-50 text-base p-2.5 m-2.5 cursor-pointer">
           <li className="relative">
-            Paket Laundry
+            Layanan Kami
             {url.pathname === "/paket-laundry" && (
               <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]" />
             )}
@@ -57,11 +57,6 @@ const Navbar = () => {
             Bantuan <FiChevronDown />{" "}
           </Link>
           <div className={`${isDropdownOpen ? 'block' : 'hidden'} absolute bg-white text-base z-50 list-none divide-y divide-gray-100 rounded shadow my-4`}>
-            <div className="px-4 py-3">
-              <span className="block text-sm font-medium text-gray-900 truncate">
-                caisguna@gmail.com
-              </span>
-            </div>
               <li>
                 <a href="/syarat-dan-ketentuan" className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2">
                   Syarat dan Ketentuan

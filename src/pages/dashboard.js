@@ -7,8 +7,50 @@ import Laundry from "../asset/laundry.png";
 import Schedule from "../asset/icon_schedule.png";
 import mesinCuci from "../asset/icon_mesin_cuci.png";
 import delivery2 from "../asset/icon_delivery2.png";
+import { useTable } from "react-table";
+import { AiFillCaretRight } from "react-icons/ai";
+import { AiFillCaretLeft } from "react-icons/ai";
 
 const Dashboard = () => {
+  const data = React.useMemo(
+    () => [
+      {
+        col1: "Hello",
+        col2: "World",
+        col3: "you",
+      },
+      {
+        col1: "react-table",
+        col2: "rocks",
+        col3: "paper",
+      },
+      {
+        col1: "whatever",
+        col2: "you want",
+        col3: "create",
+      },
+    ],
+    []
+  );
+  const columns = React.useMemo(
+    () => [
+      {
+        Header: "Serial number",
+        accessor: "col1", // accessor is the "key" in the data
+      },
+      {
+        Header: "Nama mesin",
+        accessor: "col2",
+      },
+      {
+        Header: "Muatan",
+        accessor: "col3",
+      },
+    ],
+    []
+  );
+  const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
+    useTable({ columns, data });
   return (
     <div>
       <Navbar />
@@ -18,12 +60,12 @@ const Dashboard = () => {
             <h3 className="text-5xl font-poppins text-white font-semibold">
               Laundry antar jemput
             </h3>
-            <h5 className="text-4xl font-poppins text-white mt-5">
+            <h5 className="text-3xl font-poppins text-white mt-5">
               hemat waktu dan simpel buat kamu yang #mager
             </h5>
           </div>
           <div>
-            <img src={vespaLaundry} className="m-auto" alt="bg" />
+            <img src={vespaLaundry} className="m-8" alt="bg" />
           </div>
         </div>
         <div className="px-24">
@@ -40,7 +82,9 @@ const Dashboard = () => {
           <br />
           <div className="w-full grid grid-cols-2 gap-4">
             <div>
-              <h1 className="text-4xl font-medium font-poppins">Z Bods Spray Tanning</h1>
+              <h1 className="text-4xl font-medium font-poppins">
+                Z Bods Spray Tanning
+              </h1>
               <br />
               <p className="text-justify text-lg">
                 Musim hujan membuat jemuran semakin menumpuk? Anda tidak perlu
@@ -84,7 +128,9 @@ const Dashboard = () => {
           </div>
         </div>
         <div className="mx-24">
-          <h2 className="font-medium text-2xl mb-6 mt-16 font-poppins">Tentang Kami</h2>
+          <h2 className="font-medium text-2xl mb-6 mt-16 font-poppins">
+            Tentang Kami
+          </h2>
           <h2 className="text-3xl mb-2">
             Selamat Datang di era Digital Laundry
           </h2>
@@ -139,7 +185,62 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-      <div className="bg-gray-700 pt-4">
+      <div className="flex justify-center">
+        <div className="w-4/5">
+          <table
+            {...getTableProps()}
+            style={{ border: "solid 1px black" }}
+            className="w-full mb-11"
+          >
+            <thead>
+              {headerGroups.map((headerGroup) => (
+                <tr {...headerGroup.getHeaderGroupProps()}>
+                  {headerGroup.headers.map((column) => (
+                    <th
+                      {...column.getHeaderProps()}
+                      className="py-1.5 border-2 border-solid border-[#a6a6a6] bg-[#70706f] font-bold text-white"
+                    >
+                      {column.render("Header")}
+                    </th>
+                  ))}
+                </tr>
+              ))}
+            </thead>
+            <tbody {...getTableBodyProps()}>
+              {rows.map((row) => {
+                prepareRow(row);
+                return (
+                  <tr {...row.getRowProps()} className="text-center">
+                    {row.cells.map((cell) => {
+                      return (
+                        <td
+                          {...cell.getCellProps()}
+                          className="p-2 border-solid border-[1px] border-gray-600 bg-[#ffff]"
+                        >
+                          {cell.render("Cell")}
+                        </td>
+                      );
+                    })}
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+          <div className="flex justify-end">
+            <div className="flex gap-2 items-center">
+              <label for="cars">Rows per page</label>
+              <select name="cars" id="cars">
+                <option value="volvo">10</option>
+                <option value="saab">30</option>
+                <option value="opel">50</option>
+              </select>
+              <AiFillCaretLeft />
+              <AiFillCaretRight />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="bg-sky-900 pt-4">
         <h1 className="text-center font-semibold text-white text-3xl font-poppins">
           Don't have time to wash....!!!
         </h1>
@@ -171,7 +272,9 @@ const Dashboard = () => {
               TelePhone
             </h4>
             <p className="mb-2.5 text-white">085853757211</p>
-            <h4 className="text-left font-lg text-white font-medium font-poppins">Email</h4>
+            <h4 className="text-left font-lg text-white font-medium font-poppins">
+              Email
+            </h4>
             <p className="text-white mb-6">adityaontonk1414@gmail.com</p>
           </div>
         </div>

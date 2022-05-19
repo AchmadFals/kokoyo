@@ -3,11 +3,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import crop from "../asset/crop.png";
 import { useNavigate } from "react-router-dom";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import { toast } from "react-toastify";
 import { BsEyeSlashFill } from "react-icons/bs";
 import { BsEyeFill } from "react-icons/bs";
-import {CgLogIn} from "react-icons/cg";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -15,33 +13,53 @@ const Register = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 
   const handleRegister = async (e) => {
-    toast("Users Registered");
-
-     const { fullName, username, email, password, confirmPassword } = formData;
-     await axios.post("http://192.168.20.22:8000/Register", {
-       fullName,
-       username,
-       email,
-       password,
-       confirmPassword,
-     });
-    console.log(navigate);
-    navigate("/dashboard");
+    try{
+      const { fullName, username, email, password, passwordConfirmation } = formData;
+      console.log("formData",formData)
+      await axios.post("http://fresh-laundry.landside.my.id/register", {
+        fullName,
+        username,
+        email,
+        password,
+        passwordConfirmation,
+      });
+     console.log(navigate);
+     toast("Success Register");
+     navigate("/login");
+    }catch(err){
+      toast.error('Required parameters missing', {
+        theme: "colored",
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    }
+     
   };
   console.log("formData =>", formData);
 
   return (
-    <>
-      <ToastContainer />
-
+    <>        
       <div className="bg-cyan-200 min-h-screen">
         <div className="row">
           <div className="col-6 p-3"></div>
         </div>
         <div className="row w-96 md:w-1/3 lg:w-1/3 bg-white shadow-lg shadow-gray-400 text-center m-auto rounded-xl py-3.5">
           <div className="form px-6 py-4">
-            <img src={crop} className="h-16 sm:h-64 md:h-24 lg:h-24 mx-auto" />
-            <div className="form-body">
+            <img src={crop} className="h-16 sm:h-64 md:h-24 lg:h-24 mx-auto" alt="crop"/>
+            <div cposition="top-right"
+      autoClose={5000}
+      hideProgressBar={false}
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnFocusLoss
+      draggable
+      pauseOnHoverlassName="form-body">
               <div className="fullname pb-2">
                 <label
                   className="form__label block flex font-medium text-neutral-500"
@@ -142,7 +160,7 @@ const Register = () => {
                     onChange={(e) => {
                       setFormData({
                         ...formData,
-                        confirmPassword: e.target.value,
+                        passwordConfirmation: e.target.value,
                       });
                     }}
                     className="form__input w-full px-4 py-1 border-2 border-grey-500 focus-visible:outline-none rounded-lg cursor-text"

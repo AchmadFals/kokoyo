@@ -18,7 +18,7 @@ const Login = (props) => {
   const handleLogin = async (e) => {
     toast("Users Login");
        const {username, password} = formData;
-         await axios.post("http://192.168.20.22:8000/login",{
+         await axios.post("http://fresh-laundry.landside.my.id/login",{
          username,
          password
          })
