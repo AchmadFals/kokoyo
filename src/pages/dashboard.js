@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import Navbar from "../Navbar";
 import Uwong from "../asset/uwong.jpg";
 import vespaLaundry from "../asset/antar-jemput.png";
@@ -49,6 +50,16 @@ const Dashboard = () => {
     ],
     []
   );
+  useEffect(() => {
+    getMachine();
+  }, []);
+  const getMachine = async () => {
+    const [machine, setMachine] = useState();
+    const result = await axios.get(
+      "http://fresh-laundry.landside.my.id/machine/read",
+    );
+    console.log(result.data.data)
+  };
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data });
   return (

@@ -13,9 +13,10 @@ const Register = () => {
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);
 
   const handleRegister = async (e) => {
-    try{
-      const { fullName, username, email, password, passwordConfirmation } = formData;
-      console.log("formData",formData)
+    try {
+      const { fullName, username, email, password, passwordConfirmation } =
+        formData;
+      console.log("formData", formData);
       await axios.post("http://fresh-laundry.landside.my.id/register", {
         fullName,
         username,
@@ -23,11 +24,11 @@ const Register = () => {
         password,
         passwordConfirmation,
       });
-     console.log(navigate);
-     toast("Success Register");
-     navigate("/login");
-    }catch(err){
-      toast.error('Required parameters missing', {
+      console.log(navigate);
+      toast("Success Register");
+      navigate("/login");
+    } catch (err) {
+      toast.error("Required parameters missing", {
         theme: "colored",
         position: "top-right",
         autoClose: 5000,
@@ -36,30 +37,35 @@ const Register = () => {
         pauseOnHover: true,
         draggable: true,
         progress: undefined,
-        });
+      });
     }
-     
   };
   console.log("formData =>", formData);
 
   return (
-    <>        
+    <>
       <div className="bg-cyan-200 min-h-screen">
         <div className="row">
           <div className="col-6 p-3"></div>
         </div>
         <div className="row w-96 md:w-1/3 lg:w-1/3 bg-white shadow-lg shadow-gray-400 text-center m-auto rounded-xl py-3.5">
           <div className="form px-6 py-4">
-            <img src={crop} className="h-16 sm:h-64 md:h-24 lg:h-24 mx-auto" alt="crop"/>
-            <div cposition="top-right"
-      autoClose={5000}
-      hideProgressBar={false}
-      newestOnTop={false}
-      closeOnClick
-      rtl={false}
-      pauseOnFocusLoss
-      draggable
-      pauseOnHoverlassName="form-body">
+            <img
+              src={crop}
+              className="h-16 sm:h-64 md:h-24 lg:h-24 mx-auto"
+              alt="crop"
+            />
+            <div
+              cposition="top-right"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHoverlassName="form-body"
+            >
               <div className="fullname pb-2">
                 <label
                   className="form__label block flex font-medium text-neutral-500"
@@ -142,9 +148,15 @@ const Register = () => {
                     placeholder="Password"
                   />
                   {isVisiblePassword ? (
-                    <BsEyeFill onClick={() => setIsVisiblePassword(!isVisiblePassword)} className="absolute top-1/2 right-0 translate-y-[-50%] translate-x-[-50%]" />
+                    <BsEyeFill
+                      onClick={() => setIsVisiblePassword(!isVisiblePassword)}
+                      className="absolute top-1/2 right-0 translate-y-[-50%] translate-x-[-50%]"
+                    />
                   ) : (
-                    <BsEyeSlashFill onClick={() => setIsVisiblePassword(!isVisiblePassword)} className="absolute top-1/2 right-0 translate-y-[-50%] translate-x-[-50%]" />
+                    <BsEyeSlashFill
+                      onClick={() => setIsVisiblePassword(!isVisiblePassword)}
+                      className="absolute top-1/2 right-0 translate-y-[-50%] translate-x-[-50%]"
+                    />
                   )}
                 </div>
               </div>
