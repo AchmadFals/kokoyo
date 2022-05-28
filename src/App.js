@@ -3,7 +3,7 @@ import "./styles/index.css";
 import Register from "./pages/register";
 import Login from "./pages/login";
 import Dashboard from "./pages/dashboard";
-import PaketLaundry from "./pages/paketLaundry";
+import LayananKami from "./pages/layananKami";
 import Kontakkami from "./pages/Kontakkami";
 import SyaratDanKetentuan from "./pages/syaratDanKetentuan";
 import { ToastContainer } from "react-toastify";
@@ -24,7 +24,7 @@ function App() {
     <>
       <Routes>
         <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/paket-laundry" element={<PaketLaundry />} />
+        <Route path="/layanan-kami" element={<LayananKami />} />
         <Route path="/kontak-kami" element={<Kontakkami />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
