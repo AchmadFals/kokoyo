@@ -10,7 +10,6 @@ import { BsEyeFill } from "react-icons/bs";
 
 
 const Login = (props) => {
-  const foo = "svhs"
   const navigate = useNavigate();
   const [formData, setFormData] = useState({});
   const [isVisiblePassword, setIsVisiblePassword] = useState(false);

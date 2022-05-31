@@ -44,7 +44,7 @@ const Navbar = () => {
           <li className="relative font-poppins">
             Dashboard
             {url.pathname === "/dashboard" && (
-              <span className="absolute bottom-[-20px] bg-orange-400 h-[4px]  text-orange-500 left-0 right-0 z-[1]" />
+              <span className="absolute bottom-[-24px] bg-orange-400 h-[4px]  text-orange-500 left-0 right-0 z-[1]" />
             )}
           </li>
         </Link>
@@ -55,7 +55,7 @@ const Navbar = () => {
           <li className="relative font-poppins">
             Layanan Kami
             {url.pathname === "/layanan-kami" && (
-              <span className="absolute bottom-[-20px] bg-orange-400 h-[4px] left-0 right-0 z-[1]" />
+              <span className="absolute bottom-[-24px] bg-orange-400 h-[4px] left-0 right-0 z-[1]" />
             )}
           </li>
         </Link>
@@ -97,14 +97,6 @@ const Navbar = () => {
                 Kontak Kami
               </a>
             </li>
-            <li>
-              <a
-                href="/register"
-                className="text-sm hover:bg-gray-100 text-gray-700 block px-4 py-2 font-poppins"
-              >
-                Sign out
-              </a>
-            </li>
           </div>
         </li>
         <li
@@ -125,7 +117,7 @@ const Navbar = () => {
             <img
               src={Fotoku}
               alt="foto"
-              className="w-8 rounded-[100px]"
+              className="w-8 h-8 rounded-full"
             />{" "}
             <FiChevronDown />{" "}
           </Link>

@@ -14,48 +14,32 @@ import { AiFillCaretLeft } from "react-icons/ai";
 
 const Dashboard = () => {
   const [machine, setMachine] = useState([]);
-  const [isMenu, setisMenu] = useState(false);
-  const [isResponsiveclose, setResponsiveclose] = useState(false);
-  const toggleClass = () => {
-    setisMenu(isMenu === false ? true : false);
-    setResponsiveclose(isResponsiveclose === false ? true : false);
-  };
   const [isDropdownOpen, setIsDropdownOpen] = useState({});
-  let boxClass = ["main-menu menu-right menuq1"];
-  if (isMenu) {
-    boxClass.push("menuq2");
-  } else {
-    boxClass.push("");
-  }
-  let modal = document.getElementById("modal");
-  function modalHandler(val) {
-    if (val) {
-      fadeIn(modal);
-    } else {
-      fadeOut(modal);
-    }
-  }
-  function fadeOut(el) {
-    el.style.opacity = 1;
-    (function fade() {
-      if ((el.style.opacity -= 0.1) < 0) {
-        el.style.display = "none";
-      } else {
-        requestAnimationFrame(fade);
-      }
-    })();
-  }
-  function fadeIn(el, display) {
-    el.style.opacity = 0;
-    el.style.display = display || "flex";
-    (function fade() {
-      let val = parseFloat(el.style.opacity);
-      if (!((val += 0.2) > 1)) {
-        el.style.opacity = val;
-        requestAnimationFrame(fade);
-      }
-    })();
-  }
+  const [formModalVisible, setFormModalVisible] = useState(false);
+  const [isOpenEdit, setIsOpenEdit] = useState(false);
+  const [formData, setFormData] = useState({});
+  const handleNewSubmit = async (event) => {
+    await axios.post("http://fresh-laundry.landside.my.id/machine/create", {
+      ...formData,
+    });
+    setFormModalVisible(false);
+  };
+  const handleDeleteSubmit = async (event) => {
+    console.log("...handleDeleteSumit", formData);
+    await axios.post("http://fresh-laundry.landside.my.id/machine/delete", {
+      id: formData.id,
+    });
+    setIsDropdownOpen({
+      ...isDropdownOpen,
+      delete: false,
+    });
+  };
+  const handleEditSubmit = async (event) => {
+    await axios.post("http://fresh-laundry.landside.my.id/machine/update", {
+      ...formData,
+    });
+    setFormModalVisible(false);
+  };
   const columns = React.useMemo(
     () => [
       {
@@ -73,14 +57,32 @@ const Dashboard = () => {
       {
         Header: "Action",
         accessor: "_id",
-        Cell: () => {
+        Cell: (props) => {
           return (
             <div className="">
-              <button className="border-1 px-4 rounded text-white border-solid border-purple-600 bg-orange-600">
+              <button
+                className="border-1 px-4 rounded text-white border-solid border-purple-600 bg-orange-600"
+                onClick={() => {
+                  setIsOpenEdit(true);
+                  setFormModalVisible(true);
+                  setFormData(props.row.original);
+                }}
+              >
                 Edit
               </button>
               &nbsp;
-              <button className="border-1 px-4 rounded text-white border-solid border-purple-600 bg-red-600">
+              <button
+                className="border-1 px-4 rounded text-white border-solid border-purple-600 bg-red-600"
+                onClick={() => {
+                  setIsDropdownOpen({
+                    ...isDropdownOpen,
+                    delete: true,
+                  });
+                  setFormData({
+                    id: props.value,
+                  });
+                }}
+              >
                 Delete
               </button>
             </div>
@@ -94,13 +96,14 @@ const Dashboard = () => {
     getMachine();
   }, []);
   const getMachine = async () => {
-    const result = await axios.get(
+    let result = await axios.get(
       "http://fresh-laundry.landside.my.id/machine/read"
     );
-    setMachine(result.data.data);
-    console.log(result.data.data);
+    result = result.data.data;
+    result = result.filter((res) => !res._deletedAt);
+    console.log(result);
+    setMachine(result);
   };
-  console.log(machine);
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     useTable({ columns, data: machine });
   return (
@@ -231,8 +234,8 @@ const Dashboard = () => {
             <button
               className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 mx-auto transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-4 sm:px-8 py-1 text-xs sm:text-sm"
               onClick={() =>
-                setIsDropdownOpen({
-                  ...isDropdownOpen,
+                setFormModalVisible({
+                  ...formModalVisible,
                   add: true,
                 })
               }
@@ -336,7 +339,7 @@ const Dashboard = () => {
       {/* Modal Component */}
       <div
         className={`${
-          isDropdownOpen?.add ? "block" : "hidden"
+          formModalVisible ? "block" : "hidden"
         } py-12 bg-gray-700/50 transition duration-150 ease-in-out z-10 fixed top-12 right-0 bottom-0 left-0`}
         id="modal"
       >
@@ -344,27 +347,10 @@ const Dashboard = () => {
           role="alert"
           className="container mx-auto w-11/12 md:w-2/3 max-w-lg"
         >
-          <div className="relative py-8 px-5 md:px-10 bg-white shadow-md rounded border border-gray-400 text-left">
-            <div className="w-full flex justify-start text-gray-600 mb-3">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="icon icon-tabler icon-tabler-wallet"
-                width="52"
-                height="52"
-                viewBox="0 0 24 24"
-                stroke-width="1"
-                stroke="currentColor"
-                fill="none"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-                <path stroke="none" d="M0 0h24v24H0z" />
-                <path d="M17 8v-3a1 1 0 0 0 -1 -1h-10a2 2 0 0 0 0 4h12a1 1 0 0 1 1 1v3m0 4v3a1 1 0 0 1 -1 1h-12a2 2 0 0 1 -2 -2v-12" />
-                <path d="M20 12v4h-4a2 2 0 0 1 0 -4h4" />
-              </svg>
-            </div>
+          <div className="relative py-8 px-5 md:px-10 bg-white shadow-md rounded-lg border border-gray-400 text-left">
+            <div className="w-full flex justify-start text-gray-600 mb-3"></div>
             <h1 className="text-gray-800 font-lg font-bold tracking-normal leading-tight mb-4 text-left">
-              Masukkan pesanan baru
+              {isOpenEdit ? "Edit pesanan" : "Masukkan pesanan baru"}
             </h1>
             <label
               for="name"
@@ -376,6 +362,10 @@ const Dashboard = () => {
               id="name"
               className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
               placeholder="Serial Number"
+              onChange={(e) =>
+                setFormData({ ...formData, serialNumber: e.target.value })
+              }
+              value={formData.serialNumber}
             />
             <label
               for="email2"
@@ -388,6 +378,10 @@ const Dashboard = () => {
                 id="email2"
                 className="mb-5 mt-2 text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
                 placeholder="Nama Mesin"
+                onChange={(e) =>
+                  setFormData({ ...formData, machineName: e.target.value })
+                }
+                value={formData.machineName}
               />
             </div>
             <label
@@ -397,52 +391,34 @@ const Dashboard = () => {
               Muatan
             </label>
             <div className="relative mb-5 mt-2">
-              <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="icon icon-tabler icon-tabler-calendar-event"
-                  width="20"
-                  height="20"
-                  viewBox="0 0 24 24"
-                  stroke-width="1.5"
-                  stroke="currentColor"
-                  fill="none"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path stroke="none" d="M0 0h24v24H0z" />
-                  <rect x="4" y="5" width="16" height="16" rx="2" />
-                  <line x1="16" y1="3" x2="16" y2="7" />
-                  <line x1="8" y1="3" x2="8" y2="7" />
-                  <line x1="4" y1="11" x2="20" y2="11" />
-                  <rect x="8" y="15" width="2" height="2" />
-                </svg>
-              </div>
+              <div className="absolute right-0 text-gray-600 flex items-center pr-3 h-full cursor-pointer"></div>
               <input
                 id="expiry"
                 className="text-gray-600 focus:outline-none focus:border focus:border-indigo-700 font-normal w-full h-10 flex items-center pl-3 text-sm border-gray-300 rounded border"
                 placeholder="Berat"
+                onChange={(e) =>
+                  setFormData({ ...formData, muatan: e.target.value })
+                }
+                value={formData.muatan}
               />
             </div>
             <div className="flex items-center justify-start w-full">
-              <button className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm">
+              <button
+                className="focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-700 transition duration-150 ease-in-out hover:bg-indigo-600 bg-indigo-700 rounded text-white px-8 py-2 text-sm"
+                onClick={isOpenEdit ? handleEditSubmit : handleNewSubmit}
+              >
                 Submit
               </button>
               <button
                 className="focus:outline-none focus:ring-2 focus:ring-offset-2  focus:ring-gray-400 ml-3 bg-gray-100 transition duration-150 text-gray-600 ease-in-out hover:border-gray-400 hover:bg-gray-300 border rounded px-8 py-2 text-sm"
-                onclick="modalHandler()"
+                onClick={() => setFormModalVisible(false)}
               >
                 Cancel
               </button>
             </div>
             <button
               className="cursor-pointer absolute top-0 right-0 mt-4 mr-5 text-gray-400 hover:text-gray-600 transition duration-150 ease-in-out rounded focus:ring-2 focus:outline-none focus:ring-gray-600"
-              onClick={() =>
-                setIsDropdownOpen({
-                  ...isDropdownOpen,
-                  add: false,
-                })
-              }
+              onClick={() => setFormModalVisible(false)}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -461,6 +437,70 @@ const Dashboard = () => {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
+          </div>
+        </div>
+      </div>
+      <div
+        class={`${
+          isDropdownOpen?.delete ? "block" : "hidden"
+        } min-w-screen h-screen animated fadeIn faster  fixed  left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover`}
+        id="modal-id"
+      >
+        <div class="absolute bg-black opacity-80 inset-0 z-0"></div>
+        <div class="w-full  max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg  bg-white ">
+          <div class="">
+            <div class="text-center p-5 flex-auto justify-center">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-4 h-4 -m-1 flex items-center text-red-500 mx-auto"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+                ></path>
+              </svg>
+              {console.log(formData)}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-16 h-16 flex items-center text-red-500 mx-auto"
+                viewBox="0 0 20 20"
+                fill="currentColor"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z"
+                  clip-rule="evenodd"
+                />
+              </svg>
+              <h2 class="text-xl font-bold py-4 ">Apa kamu yakin?</h2>
+              <p class="text-sm text-gray-500 px-8">
+                Apakah Anda benar-benar ingin menghapus pesanan Anda?
+              </p>
+            </div>
+            <div class="p-3  mt-2 text-center space-x-4 md:block">
+              <button
+                class="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
+                onClick={() =>
+                  setIsDropdownOpen({
+                    ...isDropdownOpen,
+                    delete: false,
+                  })
+                }
+              >
+                Cancel
+              </button>
+              <button
+                class="mb-2 md:mb-0 bg-red-500 border border-red-500 px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-red-600"
+                onClick={handleDeleteSubmit}
+              >
+                Delete
+              </button>
+            </div>
           </div>
         </div>
       </div>

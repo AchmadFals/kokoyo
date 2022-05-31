@@ -5,23 +5,48 @@ const Transaksi = () => {
   return (
     <div>
       <Navbar />
-      <div className="grid grid-cols-2 mt-20 p-4">
-        <div className="rounded-md border-slate-700 bg-gray-100 m-3 shadow-md shadow-slate-200">
-          <h2 className="text-left font-lg text-black text-2xl ml-2 mt-2 mb-3 font-poppins">
-            085708648046
-          </h2>
-          <h4 className="mx-2 mb-2 text-medium font-poppins">
-            Hubungi kami untuk info lebih lanjut ( Bulu, Bancar, Tambakboyo, Tuban )
-          </h4>
-        </div>
-        <div className="rounded-md border-slate-700 bg-gray-100 m-3 shadow-md shadow-slate-200">
-          <h2 className="text-left font-lg text-black text-2xl ml-2 mt-2 mb-3 font-poppins">
-            085853757211
-          </h2>
-          <h4 className="mx-2 mb-2 text-medium font-poppins">
-            Hubungi kami untuk info lebih lanjut ( Tangerang, BSD, Alam Sutra,
-            Bintaro, Ciputat, Cinere dan sekitarnya )
-          </h4>
+      <div
+        style={{
+          backgroundImage: `url(${
+            process.env.PUBLIC_URL + "/asset/backround.jpg"
+          })`,
+        }}
+        className="h-[100vh] bg-no-repeat w-[100%] bg-cover"
+      >
+        <div className="grid grid-cols-2 ">
+          <div className="px-32 pt-52">
+            <div className="mb-4 pl-12">
+              <h1 className="text-4xl font-Oswald font-bold">Contact Us</h1>
+            </div>
+            <div>
+              <input
+                placeholder="Name"
+                type="text"
+                id="name"
+                className="px-4 py-1 border-2 border-grey-500 focus-visible:outline-none rounded-2xl cursor-text"
+              ></input>
+            </div>
+            <div className="mt-2.5">
+              <input
+                placeholder="Email"
+                type="text"
+                id="email"
+                className="px-4 py-1 border-2 border-grey-500 focus-visible:outline-none rounded-2xl cursor-text"
+              ></input>
+            </div>
+            <div className="mt-2.5">
+              <input
+                placeholder="Message"
+                type="text"
+                className="px-4 py-1 pb-16 border-2 border-grey-500 focus-visible:outline-none rounded-2xl cursor-text"
+              ></input>
+            </div>
+            <div className="mt-5 pl-[80px]">
+              <button className="transition duration-75 border-2 border-sky-500 w-24 px-4 py-1 rounded-2xl bg-sky-500 text-white">
+                Submit
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
